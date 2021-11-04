@@ -1,12 +1,21 @@
-import React from 'react'
-import classes from './UserItem.module.css'
-
+import React from 'react';
+import './UserItem.css';
 const UserItem = (props) => {
-    return (
-        <div>
-            
+  return (
+    <li className="user-item">
+      <div className="user-item__content">
+        <div className="user-item__image">
+          <img src={props.image} alt={props.name}></img>
         </div>
-    )
-}
+        <div className="user-item__info">
+          <h2>{props.name}</h2>
+          <h2>
+            {props.placeCount} {props.placeCount === 1 ? 'Place' : 'Places'}
+          </h2>
+        </div>
+      </div>
+    </li>
+  );
+};
 
-export default UserItem
+export default UserItem;

@@ -8,18 +8,18 @@ const Users = () => {
             id:"u1",
             image:"https://randomuser.me/api/portraits/men/1.jpg",
             name:"User 1",
-            placeCount:2
+            placeCount:1
         },
         {
             id:"u2",
             image:"https://randomuser.me/api/portraits/men/2.jpg",
-            name:"User 1",
+            name:"User 2",
             placeCount:5
         },
         {
             id:"u3",
             image:"https://randomuser.me/api/portraits/men/3.jpg",
-            name:"User 1",
+            name:"User 3",
             placeCount:6
         }
     ];

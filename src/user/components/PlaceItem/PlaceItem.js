@@ -1,6 +1,8 @@
 import React from 'react'
 
-const PlaceItem = () => {
+import './PlaceItem.css'
+
+const PlaceItem = (props) => {
     return (
         <div>
             

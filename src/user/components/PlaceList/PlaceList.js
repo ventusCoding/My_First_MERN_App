@@ -1,6 +1,8 @@
 import React from 'react'
 
-const PlaceList = () => {
+import './PlaceList.css'
+
+const PlaceList = (props) => {
     return (
         <div>
             

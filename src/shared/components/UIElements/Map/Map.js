@@ -7,8 +7,8 @@ const Map = (props) => {
   const [viewport, setViewport] = useState({
     width: 620,
     height: 250,
-    latitude: 37.7577,
-    longitude: -122.4376,
+    latitude: props.coordinates.lat,
+    longitude: props.coordinates.lng,
     zoom: 11,
   });
 
@@ -20,7 +20,7 @@ const Map = (props) => {
         mapStyle="mapbox://styles/ventus69/ckr6s5wi811ji17o1n73vmrut"
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       >
-          <Marker latitude={37.7577} longitude={-122.4376}>
+          <Marker latitude={props.coordinates.lat} longitude={props.coordinates.lng}>
           <div className="marker temporary-marker"><span></span></div>
           </Marker>
       </ReactMapGL>

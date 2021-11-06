@@ -24,9 +24,12 @@ const formReducer = (state, action) => {
         ...state,
         inputs: {
           ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid }
+          [action.inputId]: {
+            value: action.value,
+            isValid: action.isValid,
+          },
         },
-        isValid: formIsValid
+        isValid: formIsValid,
       };
     default:
       return state;
@@ -48,21 +51,23 @@ const NewPlace = () => {
     isValid: false,
   });
 
-  const InputHandler = useCallback(
-    (id, value, isValid) => {
-      console.log(id);
-      dispatch({
-        type: 'INPUT_CHANGE',
-        value: value,
-        isValid: isValid,
-        inputId: id,
-      });
-    },
-    [dispatch],
-  );
+  const InputHandler = useCallback((id, value, isValid) => {
+    dispatch({
+      type: 'INPUT_CHANGE',
+      value: value,
+      isValid: isValid,
+      inputId: id,
+    });
+  }, []);
+
+  const placeSubmitHandler = (event) => {
+    event.preventDefault();
+
+    console.log(formState.inputs); // TODO : Send Data to the Backend
+  };
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={placeSubmitHandler}>
       <Input
         id="title"
         type="text"
@@ -78,6 +83,14 @@ const NewPlace = () => {
         label="Description"
         errorText="Please enter a valid description (at least 5 characters.)"
         validators={[VALIDATOR_MINLENGTH(5)]}
+        onInput={InputHandler}
+      />
+      <Input
+        id="address"
+        element="input"
+        label="Address"
+        errorText="Please enter a valid address."
+        validators={[VALIDATOR_REQUIRE()]}
         onInput={InputHandler}
       />
       <Button type="submit" disabled={!formState.isValid}>

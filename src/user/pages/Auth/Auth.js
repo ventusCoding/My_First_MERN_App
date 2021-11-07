@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import './Auth.css';
 
@@ -11,8 +11,10 @@ import {
   VALIDATOR_REQUIRE,
 } from '../../../shared/components/Util/validators';
 import { useForm } from '../../../shared/hooks/form-hook';
+import { AuthContext } from '../../../shared/context/auth-context';
 
 const Auth = () => {
+  const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
 
   const [formState, inputHandler, setFormData] = useForm(
@@ -57,6 +59,7 @@ const Auth = () => {
     event.preventDefault();
 
     console.log(formState.inputs); //TODO : Send Data to Backend
+    auth.login();
   };
 
   return (

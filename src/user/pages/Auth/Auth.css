@@ -11,5 +11,9 @@
   }
   
   .authentication form {
-    margin: 1.5rem;
+    margin: 1rem;
+  }
+
+  .authentication button {
+    margin-bottom: 1rem;
   }
